@@ -115,10 +115,9 @@ export class ComponentService {
     }
 
     // Fetch component metadata with files
-    const component = await this.registryService.fetchComponent(
-      componentName,
-      { includeFiles: true },
-    )
+    const component = await this.registryService.fetchComponent(componentName, {
+      includeFiles: true,
+    })
 
     // Resolve dependencies (fetch without files for dependencies)
     await this.registryService.resolveDependencies(component)
@@ -146,8 +145,10 @@ export class ComponentService {
 
     // Fetch files for the main component with content
     const componentWithFiles = await this.fetchComponentWithFiles(componentName)
-  
-    for (const [filePath, content] of Object.entries(componentWithFiles.files)) {
+
+    for (const [filePath, content] of Object.entries(
+      componentWithFiles.files,
+    )) {
       // Determine destination based on file type
       const dest = this.getDestinationPath(filePath)
       const fileType = getFileTypeFromPath(filePath)
@@ -215,12 +216,26 @@ export class ComponentService {
       npm?: string[]
     } = {}
 
-    if (component.requires && component.requires.length > 0) {
-      dependencies.composer = [...component.requires]
+    if (
+      component.requires &&
+      component.requires.composer &&
+      component.requires.composer.length > 0
+    ) {
+      dependencies.composer = [...component.requires.composer]
     }
 
     if (component.requires_alpine) {
       dependencies.npm = ['alpinejs']
+    }
+
+    if (
+      component.requires &&
+      component.requires.npm &&
+      component.requires.npm.length > 0
+    ) {
+      dependencies.npm = dependencies.npm
+        ? [...dependencies.npm, ...component.requires.npm]
+        : [...component.requires.npm]
     }
 
     return Object.keys(dependencies).length > 0 ? dependencies : null

@@ -44,7 +44,7 @@ Velyx can be executed without installation.
 ### Initialize Velyx in a project
 
 ```bash
-npx velyx init
+npx velyx@latest init
 ```
 
 This command:
@@ -57,7 +57,7 @@ This command:
 ### Add a component
 
 ```bash
-npx velyx add button
+npx velyx@latest add button
 ```
 
 Velyx will:
@@ -77,13 +77,13 @@ resources/views/components/ui
 ### List available components
 
 ```bash
-npx velyx list
+npx velyx@latest list
 ```
 
 ### Search for a component
 
 ```bash
-npx velyx search
+npx velyx@latest search
 ```
 
 ---
@@ -93,15 +93,15 @@ npx velyx search
 Velyx can be used without installation via `npx`, but you can also install it globally for frequent use:
 
 ```bash
-npm install -g velyx
+npm install -g velyx@latest
 # or
-pnpm add -g velyx
+pnpm add -g velyx@latest
 ```
 
 For development releases (beta/next tags):
 
 ```bash
-npx velyx@beta
+npx velyx@latest
 ```
 
 ---
@@ -112,7 +112,7 @@ Velyx does **not** update your code automatically.
 
 If a component changes in the registry and you want the new version:
 
-- run `velyx add <component>` again
+- run `npx velyx@latest add <component>` again
 - review the changes
 - decide what to keep
 
@@ -133,7 +133,7 @@ Velyx exists to help you move faster, not to take control away from you.
 
 ## Configuration
 
-After running `velyx init`, a `velyx.json` file is created in your project root. This file stores your Velyx configuration and can be customized to your needs.
+After running `npx velyx@latest init`, a `velyx.json` file is created in your project root. This file stores your Velyx configuration and can be customized to your needs.
 
 ## Documentation
 

@@ -52,7 +52,7 @@ export interface VelyxComponentMeta {
   /** Whether Alpine.js is required */
   requires_alpine: boolean
   /** Required Composer dependencies */
-  requires: readonly string[]
+  requires: VelyxDependency
   /** Laravel version requirement */
   laravel?: string
 }

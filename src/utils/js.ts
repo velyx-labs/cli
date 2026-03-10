@@ -1,6 +1,12 @@
 import fs from 'fs'
 import type { FileInfo } from '@/src/types'
 
+export function toJsIdentifier(componentName: string): string {
+  return componentName
+    .replace(/^[^a-zA-Z_$]+/, '')
+    .replace(/[-_]+([a-zA-Z0-9])/g, (_, char: string) => char.toUpperCase())
+}
+
 /**
  * Common JS file paths to check for main script
  */
@@ -40,11 +46,13 @@ export function injectComponentJs(
 ): void {
   let content = fs.readFileSync(jsPath, 'utf8')
 
+  const jsIdentifier = toJsIdentifier(componentName)
+
   // Avoid duplicate imports
-  const importStatement = `import ${componentName} from '${componentImportPath}'`
+  const importStatement = `import ${jsIdentifier} from '${componentImportPath}'`
   if (
     content.includes(importStatement) ||
-    content.includes(`import ${componentName} from "${componentImportPath}"`)
+    content.includes(`import ${jsIdentifier} from "${componentImportPath}"`)
   ) {
     return
   }
@@ -62,7 +70,7 @@ export function injectComponentJs(
   content = lines.join('\n')
 
   // Handle Alpine.data registration
-  const alpineDataRegistration = `Alpine.data('${componentName}', ${componentName});`
+  const alpineDataRegistration = `Alpine.data('${jsIdentifier}', ${jsIdentifier});`
 
   if (content.includes("document.addEventListener('alpine:init'")) {
     // Inject into existing listener
