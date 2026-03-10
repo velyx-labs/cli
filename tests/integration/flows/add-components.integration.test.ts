@@ -52,6 +52,32 @@ const rangeSliderWithFiles: RegistryComponentWithFiles = {
   },
 }
 
+const tabsMeta: VelyxComponentMeta = {
+  name: 'tabs',
+  description: 'Tabs component',
+  latest: '1.0.0',
+  versions: ['1.0.0'],
+  categories: ['navigation'],
+  requires_alpine: false,
+  requires: [],
+  laravel: '^11 || ^12',
+}
+
+const tabsWithFiles: RegistryComponentWithFiles = {
+  ...tabsMeta,
+  files: {
+    'resources/views/components/ui/tabs/index.blade.php':
+      '<div>{{ $slot }}</div>\n',
+    'resources/views/components/ui/tabs/list.blade.php':
+      '<div role="tablist">{{ $slot }}</div>\n',
+    'resources/views/components/ui/tabs/content.blade.php':
+      '<div role="tabpanel">{{ $slot }}</div>\n',
+    'resources/views/components/ui/tabs/trigger.blade.php':
+      '<button role="tab">{{ $slot }}</button>\n',
+    'resources/js/ui/tabs.js': 'export default () => ({})\n',
+  },
+}
+
 describe('addComponents integration', () => {
   const projectPaths: string[] = []
   const initialCwd = process.cwd()
@@ -121,6 +147,80 @@ describe('addComponents integration', () => {
     const entryContent = await fs.readFile(jsEntryPath, 'utf8')
     expect(entryContent).toContain("import button from './ui/button'")
     expect(entryContent).toContain("Alpine.data('button', button);")
+  })
+
+
+  it('writes nested blade component files with index.blade.php for the root component', async () => {
+    vi.spyOn(console, 'log').mockImplementation(() => undefined)
+
+    vi.spyOn(RegistryService.prototype, 'fetchRegistry').mockResolvedValue({
+      components: [tabsMeta],
+      count: 1,
+    })
+    vi.spyOn(RegistryService.prototype, 'fetchComponent').mockResolvedValue(
+      tabsWithFiles,
+    )
+    vi.spyOn(RegistryService.prototype, 'resolveDependencies').mockResolvedValue(
+      [tabsMeta],
+    )
+
+    const projectPath = await createTempProjectFromFixture('laravel-minimal')
+    projectPaths.push(projectPath)
+
+    await fs.writeJson(
+      path.join(projectPath, 'velyx.json'),
+      {
+        version: '1.0.0',
+        theme: 'neutral',
+        packageManager: 'npm',
+        css: {
+          entry: 'resources/css/app.css',
+          velyx: 'resources/css/velyx.css',
+        },
+        js: {
+          entry: 'resources/js/app.js',
+        },
+        components: {
+          path: 'resources/views/components/ui',
+        },
+      },
+      { spaces: 2 },
+    )
+
+    await addComponents({
+      cwd: projectPath,
+      all: false,
+      components: ['tabs'],
+    })
+
+    expect(
+      await fs.pathExists(
+        path.join(projectPath, 'resources/views/components/ui/tabs/index.blade.php'),
+      ),
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(projectPath, 'resources/views/components/ui/tabs/list.blade.php'),
+      ),
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(projectPath, 'resources/views/components/ui/tabs/content.blade.php'),
+      ),
+    ).toBe(true)
+    expect(
+      await fs.pathExists(
+        path.join(projectPath, 'resources/views/components/ui/tabs/trigger.blade.php'),
+      ),
+    ).toBe(true)
+
+    const entryContent = await fs.readFile(
+      path.join(projectPath, 'resources/js/app.js'),
+      'utf8',
+    )
+
+    expect(entryContent).toContain("import tabs from './ui/tabs'")
+    expect(entryContent).toContain("Alpine.data('tabs', tabs);")
   })
 
   it('injects camelCase Alpine identifiers for kebab-case component names', async () => {
