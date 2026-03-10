@@ -38,19 +38,19 @@ describe('AddService output', () => {
     )
 
     const result: AddResult = {
-      added: ['button/resources/views/components/ui/button/button.blade.php'],
-      skipped: ['card/resources/js/ui/card.js'],
-      failed: [{ name: 'badge', error: 'network error' }],
+      added: ['resources/views/components/ui/button/index.blade.php'],
+      skipped: ['resources/js/ui/card.js'],
+      failed: [{ name: 'resources/views/components/ui/badge/index.blade.php', error: 'network error' }],
     }
 
     service.displayResults(result)
 
     expect(successSpy).toHaveBeenCalledWith(
-      'Added button/resources/views/components/ui/button/button.blade.php',
+      'Added resources/views/components/ui/button/index.blade.php',
     )
-    expect(warnSpy).toHaveBeenCalledWith('Skipped card/resources/js/ui/card.js')
+    expect(warnSpy).toHaveBeenCalledWith('Skipped resources/js/ui/card.js')
     expect(errorSpy).toHaveBeenCalledWith(
-      'Failed to add badge: network error',
+      'Failed to add resources/views/components/ui/badge/index.blade.php: network error',
     )
   })
 

@@ -26,7 +26,7 @@ const buttonMeta: VelyxComponentMeta = {
 const buttonWithFiles: RegistryComponentWithFiles = {
   ...buttonMeta,
   files: {
-    'resources/views/components/ui/button/button.blade.php':
+    'resources/views/components/ui/button/index.blade.php':
       '<button class="btn">Click</button>\n',
     'resources/js/ui/button.js': 'export default () => ({})\n',
   },
@@ -136,7 +136,7 @@ describe('addComponents integration', () => {
 
     const bladePath = path.join(
       projectPath,
-      'resources/views/components/ui/button/button.blade.php',
+      'resources/views/components/ui/button/index.blade.php',
     )
     const jsComponentPath = path.join(projectPath, 'resources/js/ui/button.js')
     const jsEntryPath = path.join(projectPath, 'resources/js/app.js')

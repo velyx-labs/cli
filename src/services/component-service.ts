@@ -158,7 +158,7 @@ export class ComponentService {
       if (existedBefore) {
         const action = await this.handleFileConflict(filePath)
         if (action === 'skip') {
-          result.skipped.push(`${componentName}/${filePath}`)
+          result.skipped.push(dest)
           continue
         } else if (action === 'cancel') {
           logger.error('Cancelled.')
@@ -179,9 +179,7 @@ export class ComponentService {
     if (plannedFiles.length > 0) {
       try {
         await this.applyFileBatch(plannedFiles)
-        plannedFiles.forEach((file) =>
-          result.added.push(`${file.componentName}/${file.filePath}`),
-        )
+        plannedFiles.forEach((file) => result.added.push(file.destPath))
 
         const jsComponents = new Set(
           plannedFiles
@@ -194,7 +192,7 @@ export class ComponentService {
       } catch (error) {
         plannedFiles.forEach((file) =>
           result.failed.push({
-            name: `${file.componentName}/${file.filePath}`,
+            name: file.destPath,
             error: (error as Error).message,
           }),
         )
