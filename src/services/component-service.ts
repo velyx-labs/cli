@@ -215,7 +215,7 @@ export class ComponentService {
     } = {}
 
     if (component.requires?.composer?.length) {
-      dependencies.composer = [...new Set(component.requires.composer)]
+      dependencies.composer = Array.from(new Set(component.requires.composer))
     }
 
     const npmDependencies = component.requires?.npm
@@ -224,13 +224,15 @@ export class ComponentService {
 
     if (
       component.requires_alpine &&
-      !npmDependencies.some((dep) => dep === 'alpinejs' || dep.startsWith('alpinejs@'))
+      !npmDependencies.some(
+        (dep) => dep === 'alpinejs' || dep.startsWith('alpinejs@'),
+      )
     ) {
       npmDependencies.unshift('alpinejs')
     }
 
     if (npmDependencies.length > 0) {
-      dependencies.npm = [...new Set(npmDependencies)]
+      dependencies.npm = Array.from(new Set(npmDependencies))
     }
 
     return Object.keys(dependencies).length > 0 ? dependencies : null

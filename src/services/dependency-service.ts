@@ -181,7 +181,8 @@ export class DependencyService implements IDependencyService {
       return
     }
 
-    const missingDeps = await this.filterMissingComposerDependencies(dependencies)
+    const missingDeps =
+      await this.filterMissingComposerDependencies(dependencies)
 
     if (missingDeps.length === 0) {
       logger.info('All composer dependencies already installed')
@@ -191,7 +192,9 @@ export class DependencyService implements IDependencyService {
     const installSpecs = missingDeps.map(toComposerInstallSpec)
 
     try {
-      logger.info(`Installing composer dependencies: ${installSpecs.join(', ')}`)
+      logger.info(
+        `Installing composer dependencies: ${installSpecs.join(', ')}`,
+      )
 
       const { stdout, stderr } = await execAsync(
         `composer require ${installSpecs.join(' ')}`,
