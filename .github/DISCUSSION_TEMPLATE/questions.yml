@@ -1,0 +1,25 @@
+title: "Q&A"
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this discussion for usage questions, debugging help, or implementation clarifications that are not yet confirmed bugs.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Ask the question directly.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Include commands, expected behavior, or relevant project setup.
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you already tried
+      description: List checks or commands you already ran.

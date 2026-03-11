@@ -1,49 +1,66 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Propose a concrete CLI capability, command change, or install workflow improvement
 title: '[FEATURE] '
-labels: enhancement
+labels: enhancement, needs-triage
 assignees: ''
 ---
 
-## Feature Description
+## Summary
 
-A clear and concise description of the feature you'd like to see added to the Velyx CLI.
+Describe the feature in one or two direct sentences.
 
-## Problem Statement
+## Problem
 
-What problem does this feature solve? What pain point does it address?
+Explain the current limitation or workflow pain point.
 
-## Proposed Solution
+## Proposed Change
 
-Describe the solution you'd like. Include:
+Describe the change you want.
 
-- CLI command syntax
-- New options or flags
-- Expected behavior
-- Example usage
+- Command or option changes:
+- File generation changes:
+- Dependency handling changes:
+- Output or prompt changes:
 
-```bash
-# Example usage
-velyx add button --variant="outline"
+## Example Usage
+
+```text
+velyx ...
 ```
+
+## Expected Outcome
+
+Describe the user-facing result if this is implemented.
 
 ## Alternatives Considered
 
-Describe any alternative solutions or features you've considered.
+List other approaches and why they are less suitable.
 
-## Impact
+## Delivery Impact
 
 - [ ] Breaking change
 - [ ] Requires registry API changes
-- [ ] Requires documentation update
+- [ ] Requires docs update
+- [ ] Requires migration guidance
 - [ ] Backward compatible
+
+## Validation Plan
+
+How should this be tested?
+
+```text
+Example: pnpm typecheck
+Example: pnpm test
+Example: run against a real Laravel fixture
+```
+
+## Scope Check
+
+- [ ] I checked for an existing request
+- [ ] I described the affected commands or files precisely
+- [ ] I included technical constraints or tradeoffs where relevant
 
 ## Additional Context
 
-Add any other context, mockups, or examples about the feature request here.
-
-## Would you like to implement this?
-
-- [ ] Yes, I'd like to implement this feature
-- [ ] No, I'm just proposing the idea
+Add references, examples, or related issues.

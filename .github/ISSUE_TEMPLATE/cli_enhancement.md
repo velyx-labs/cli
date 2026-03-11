@@ -1,39 +1,59 @@
 ---
-name: CLI experience improvement
-about: Suggest improvements to the CLI user experience
+name: CLI UX improvement
+about: Suggest a focused improvement to prompts, wording, progress feedback, or command ergonomics
 title: '[UX] '
-labels: enhancement, ux
+labels: enhancement, ux, needs-triage
 assignees: ''
 ---
 
-## UX Issue
+## Summary
 
-Describe the aspect of the CLI experience that could be improved.
+Describe the UX problem or opportunity.
 
-## Current Behavior
+## Current Experience
 
-Describe the current behavior or flow.
+Explain what feels slow, unclear, noisy, or inconsistent.
 
 ## Proposed Improvement
 
-Describe how you think the CLI should behave or look.
+Describe the improved behavior.
 
-## Examples
+- Prompt flow:
+- Output wording:
+- Error clarity:
+- Command ergonomics:
+- Defaults or discoverability:
 
-If other CLIs do this well, please provide examples:
+## Example
 
-- Example CLI: [name]
-- What they do: [description]
+Show a concrete before/after if possible.
 
-## Use Cases
+```text
+Current:
+...
 
-Describe the typical use cases where this improvement would help.
+Proposed:
+...
+```
+
+## User Impact
+
+Explain who benefits and in which workflow.
+
+## Validation Plan
+
+How should we verify this change?
+
+- [ ] Manual CLI run
+- [ ] Snapshot or output assertion
+- [ ] Integration or E2E test update
+
+## Scope Check
+
+- [ ] I checked for an existing issue
+- [ ] I described the exact command flow involved
+- [ ] I kept the proposal focused on one UX problem
 
 ## Additional Context
 
-Add any other context, screenshots (of terminal output), or examples.
-
-## Would you like to implement this?
-
-- [ ] Yes, I'd like to implement this improvement
-- [ ] No, I'm just proposing the idea
+Add references to other CLIs or screenshots of terminal output.

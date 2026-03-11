@@ -1,0 +1,25 @@
+title: "Idea"
+labels:
+  - idea
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this discussion for early ideas that are not yet ready to become scoped feature requests.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      description: Describe the idea directly.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem it solves
+      description: Explain the workflow problem or friction.
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Tradeoffs
+      description: Note any risks, alternatives, or unknowns.

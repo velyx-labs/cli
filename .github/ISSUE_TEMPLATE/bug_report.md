@@ -1,63 +1,72 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Report a reproducible CLI problem affecting commands, file generation, dependency installs, or output
 title: '[BUG] '
 labels: bug, needs-triage
 assignees: ''
 ---
 
-## Bug Description
+## Summary
 
-A clear and concise description of what the bug is.
+Describe the bug directly.
 
-## Steps to Reproduce
+## Impact
 
-1. Run `velyx ...`
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+Explain what breaks.
+
+- [ ] `velyx init`
+- [ ] `velyx add`
+- [ ] `velyx list` or `velyx search`
+- [ ] Dependency installation
+- [ ] Generated files or imports
+- [ ] CLI output or prompts
+
+## Steps To Reproduce
+
+1. Run `...`
+2. Use options `...`
+3. Observe `...`
 
 ## Expected Behavior
 
-A clear and concise description of what you expected to happen.
+Describe what should happen.
 
 ## Actual Behavior
 
-A clear and concise description of what actually happened.
+Describe what actually happens.
 
-## Error Messages
+## Evidence
 
-```
-Paste error messages or stack traces here
+Paste the most relevant command output.
+
+```text
+Paste stdout, stderr, or stack traces here.
 ```
 
 ## Environment
 
-- Node.js Version: [e.g. 20.11.0]
-- pnpm Version: [e.g. 8.15.0]
-- Velyx CLI Version: [e.g. 1.0.0]
-- Laravel Version: [e.g. 11.0]
-- PHP Version: [e.g. 8.3]
-- OS: [e.g. Ubuntu 22.04, macOS 14, Windows 11]
-- Shell: [e.g. bash, zsh, PowerShell]
-
-## Commands Run
-
-```bash
-# Commands you ran
-velyx add button
-```
+- Node.js version:
+- Package manager and version:
+- CLI version:
+- Laravel version:
+- PHP version:
+- OS:
+- Shell:
 
 ## Project Context
 
-- Is this a fresh Laravel install or an existing project?
-- Are you using any special configuration?
-- Are you working in a monorepo?
+- [ ] Fresh Laravel project
+- [ ] Existing Laravel project
+- [ ] Monorepo
+- [ ] Custom `velyx.json`
+- [ ] Custom JS or CSS entry paths
+
+## Scope Check
+
+- [ ] I reproduced this on the current version of the CLI
+- [ ] I checked for an existing issue
+- [ ] I included exact commands and paths where relevant
 
 ## Additional Context
 
-Add any other context about the problem here.
-
-## Possible Solution (Optional)
-
-If you have an idea of how to fix this, please describe it here.
+Add any other context, related files, or screenshots.
