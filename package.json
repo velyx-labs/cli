@@ -1,6 +1,6 @@
 {
   "name": "velyx",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "CLI to add composable UI components to Laravel projects",
   "author": "",
   "license": "MIT",
@@ -62,7 +62,6 @@
     "log-symbols": "^7.0.1",
     "ora": "^9.1.0",
     "prompts": "^2.4.2",
-    "velyx": "link:../../../../.local/share/pnpm/global/5/node_modules/velyx",
     "vite-tsconfig-paths": "^6.0.5",
     "zod": "^3.24.1",
     "zod-to-json-schema": "^3.24.6"
