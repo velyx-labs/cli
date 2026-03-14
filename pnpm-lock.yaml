@@ -35,9 +35,6 @@ importers:
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
-      velyx:
-        specifier: link:../../../../.local/share/pnpm/global/5/node_modules/velyx
-        version: link:../../../../.local/share/pnpm/global/5/node_modules/velyx
       vite-tsconfig-paths:
         specifier: ^6.0.5
         version: 6.0.5(typescript@5.9.3)(vite@7.3.1(@types/node@25.0.9)(jiti@2.6.1))
