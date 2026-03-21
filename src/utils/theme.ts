@@ -85,6 +85,11 @@ export function copyTheme(theme: VelyxTheme, target: string): void {
   const lightVars = renderCssVars(baseColor.cssVars.light)
   const darkVars = renderCssVars(baseColor.cssVars.dark)
 
+  // Generate Tailwind v4 @theme inline mappings
+  const themeMappings = Object.keys(baseColor.cssVars.light)
+    .filter((key) => key !== 'radius') // Exclude non-color vars
+    .map((key) => `  --color-${key}: var(--${key});`)
+
   const content = [
     ':root {',
     ...lightVars,
@@ -92,6 +97,10 @@ export function copyTheme(theme: VelyxTheme, target: string): void {
     '',
     '.dark {',
     ...darkVars,
+    '}',
+    '',
+    '@theme inline {',
+    ...themeMappings,
     '}',
     '',
   ].join('\n')
