@@ -1,5 +1,16 @@
 # velyx
 
+## 2.0.2
+
+### Patch Changes
+
+- Ask user to override existing velyx.css theme file
+
+  When running `velyx init`, if a velyx.css file already exists, the CLI will now ask the user if they want to overwrite it with the current theme or
+  keep the existing file.
+
+  Also fixed EEXIST error when overwriting existing files.
+
 ## 2.0.1
 
 ### Patch Changes

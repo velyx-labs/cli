@@ -1,6 +1,6 @@
 {
   "name": "velyx",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "CLI to add composable UI components to Laravel projects",
   "author": "",
   "license": "MIT",
